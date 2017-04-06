@@ -10,8 +10,7 @@ public class PercolateStats {
 
 	private int T;
 	private double mean_value;
-	public int [] sites_number;
-	public	int sites_numbers;
+	private int [] sites_number;
 	public PercolateStats(int n, int trials) {
 		Percolation perc = new Percolation(n);
 		T = trials;
@@ -44,7 +43,7 @@ public class PercolateStats {
 
 		PercolateStats percs = new PercolateStats(size, trials);
 		for (int p = 0; p < trials; p++) {
-			site_numbers = 0;
+			int site_numbers = 0;
 			while (!percs.perc.percolate()) {
 				int i = StdRandom.uniform(1, size + 1);
 				int j = StdRandom.uniform(1, size + 1);
