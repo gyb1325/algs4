@@ -3,17 +3,17 @@
   <project autorefresh="false" root="" work="">
     <createjar file=""/>
     <source>
-      <file active="true" name="PercolateStats.java" package="" timestamp="06-Apr-2017 13:51:28">
-        <select from="460" to="460"/>
-        <scroll column="222" row="0"/>
-      </file>
-      <file name="Percolation.java" package="" timestamp="06-Apr-2017 13:40:51">
-        <select from="460" to="460"/>
-        <scroll column="222" row="0"/>
+      <file active="true" name="PercolateStats.java" package="" timestamp="06-Apr-2017 13:56:19">
+        <select from="410" to="410"/>
+        <scroll column="11" row="0"/>
       </file>
       <file name="PercolationVisualizer.java" package="" timestamp="06-Apr-2017 13:46:23">
-        <select from="460" to="460"/>
-        <scroll column="222" row="0"/>
+        <select from="410" to="410"/>
+        <scroll column="11" row="0"/>
+      </file>
+      <file name="Percolation.java" package="" timestamp="06-Apr-2017 13:56:19">
+        <select from="410" to="410"/>
+        <scroll column="11" row="0"/>
       </file>
     </source>
     <included/>
