@@ -96,7 +96,7 @@ public class Percolation {
 		return p_grid.connected(top, bottom);
 	}
 
-
+// Use for simple test
 	public static void main(String[] args) {
 		// InputStream f = new FileInputStream("F:/percolate/input8-no.txt");
 		// scanner = new Scanner(new BufferedInputStream(f), CHARSET_NAME);
@@ -117,6 +117,5 @@ public class Percolation {
 
 	}
 
-	/* ADD YOUR CODE HERE */
 
 }
