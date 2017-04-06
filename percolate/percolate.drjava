@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="PercolationVisualizer.java" package="" timestamp="05-Apr-2017 21:24:13">
+        <select from="506" to="506"/>
+        <scroll column="143" row="0"/>
+      </file>
+      <file name="Percolation.java" package="" timestamp="05-Apr-2017 21:23:55">
+        <select from="506" to="506"/>
+        <scroll column="143" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="true" name="F:/percolate/algs4.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
