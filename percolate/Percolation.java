@@ -97,25 +97,25 @@ public class Percolation {
 	}
 
 // Use for simple test
-	public static void main(String[] args) {
-		// InputStream f = new FileInputStream("F:/percolate/input8-no.txt");
-		// scanner = new Scanner(new BufferedInputStream(f), CHARSET_NAME);
-		// scanner.useLocale(LOCALE);
-		In in = new In("F:/percolate/input8-no.txt");
-		int n = in.readInt();
-		Percolation perc = new Percolation(n);
-		while (!in.isEmpty()) {
-			int i = in.readInt();
-			int j = in.readInt();
-			perc.open(i, j);
-			if (perc.percolates()) {
-				System.out.println("It percolates");
+	/*	public static void main(String[] args) {
+			// InputStream f = new FileInputStream("F:/percolate/input8-no.txt");
+			// scanner = new Scanner(new BufferedInputStream(f), CHARSET_NAME);
+			// scanner.useLocale(LOCALE);
+			In in = new In("F:/percolate/input8-no.txt");
+			int n = in.readInt();
+			Percolation perc = new Percolation(n);
+			while (!in.isEmpty()) {
+				int i = in.readInt();
+				int j = in.readInt();
+				perc.open(i, j);
+				if (perc.percolates()) {
+					System.out.println("It percolates");
+				}
+
 			}
 
-		}
 
-
-	}
+		}  */
 
 
 }
