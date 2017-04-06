@@ -23,7 +23,7 @@ public class Percolation {
 		}
 		dim = n;
 		bottom = n * n + 1;
-		top = 0;
+		top = n * n ;
 	}
 
 	public void open(int row , int col) throws java.lang.IndexOutOfBoundsException {
