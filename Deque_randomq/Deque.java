@@ -1,17 +1,17 @@
 /**
  * Auto Generated Java Class.
  */
-import edu.princeton.cs.algs4.StdOut;
+//import edu.princeton.cs.algs4.StdOut;
 import java.util.Iterator;
 
-public class Deque<T> implements Iterable<T> {
+public class Deque<Item> implements Iterable<Item> {
 	private Node first, last = null;
 	private int size_num = 0;
 
 	private class Node {
-		T item;
-		Node next;
-		Node prev;
+		private Item item;
+		private Node next;
+		private Node prev;
 	}
 
 	public Deque() {
@@ -27,7 +27,7 @@ public class Deque<T> implements Iterable<T> {
 		return size_num;
 	}
 
-	public void addFirst(T item) {
+	public void addFirst(Item item) {
 		if (item == null) throw new java.lang.NullPointerException("Add a null item is not allowed");
 		Node oldfirst = first;
 		first = new Node();
@@ -39,7 +39,7 @@ public class Deque<T> implements Iterable<T> {
 		size_num++;
 	}
 
-	public void addLast(T item) {
+	public void addLast(Item item) {
 		if (item == null) throw new java.lang.NullPointerException("Add a null item is not allowed");
 		Node oldlast = last;
 		last = new Node();
@@ -51,9 +51,9 @@ public class Deque<T> implements Iterable<T> {
 		size_num++;
 	}
 
-	public T removeFirst() {
-		if (isEmpty())throw new java.lang.UnsupportedOperationException("The deque is empty");
-		T item = first.item;
+	public Item removeFirst() {
+		if (isEmpty())throw new java.util.NoSuchElementException("The deque is empty");
+		Item item = first.item;
 		first = first.next;
 		if (first != null)first.prev = null;
 		else {
@@ -64,9 +64,9 @@ public class Deque<T> implements Iterable<T> {
 		return item;
 	}
 
-	public T removeLast() {
-		if (isEmpty())throw new java.lang.UnsupportedOperationException("The deque is empty");
-		T item = last.item;
+	public Item removeLast() {
+		if (isEmpty())throw new java.util.NoSuchElementException("The deque is empty");
+		Item item = last.item;
 		last = last.prev;
 		if (last != null)last.next = null;
 		else {
@@ -77,15 +77,15 @@ public class Deque<T> implements Iterable<T> {
 		return item;
 	}
 
-	public Iterator<T> iterator() { return new Dequeiterator(); }
+	public Iterator<Item> iterator() { return new Dequeiterator(); }
 
-	private class Dequeiterator implements Iterator<T> {
+	private class Dequeiterator implements Iterator<Item> {
 		private Node current = first;
 
-		public boolean hasNext() {return current != null;}
-		public T next() {
+		public boolean hasNext() { return current != null; }
+		public Item next() {
 			if (current == null)throw new java.util.NoSuchElementException("The iterator has no more elements");
-			T item = current.item;
+			Item item = current.item;
 			current = current.next;
 			return item;
 		}

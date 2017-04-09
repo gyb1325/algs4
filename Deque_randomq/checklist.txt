@@ -1,0 +1,1141 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED (0 errors, 2 warnings)
+API:          PASSED
+
+Findbugs:     PASSED
+Checkstyle:   FAILED (10 warnings)
+
+Correctness:  25/43 tests passed
+Memory:       30/53 tests passed
+Timing:       55/110 tests passed
+
+Aggregate score: 60.54%
+[Compilation: 5%, API: 5%, Findbugs: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+3.3K Apr  9 21:36 Deque.java
+ 412 Apr  9 21:36 Permutation.java
+3.1K Apr  9 21:36 RandomizedQueue.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac Deque.java
+*-----------------------------------------------------------
+
+% javac RandomizedQueue.java
+*-----------------------------------------------------------
+RandomizedQueue.java:10: warning: [unchecked] unchecked cast
+		Item[] copy = (Item[]) new Object[capacity];
+		                       ^
+  required: Item[]
+  found:    Object[]
+  where Item is a type-variable:
+    Item extends Object declared in class RandomizedQueue
+RandomizedQueue.java:17: warning: [unchecked] unchecked cast
+		s = (Item[]) new Object[1];
+		             ^
+  required: Item[]
+  found:    Object[]
+  where Item is a type-variable:
+    Item extends Object declared in class RandomizedQueue
+2 warnings
+
+% javac Permutation.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Deque:
+
+RandomizedQueue:
+
+Permutation:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% findbugs *.class
+*-----------------------------------------------------------
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+Deque.java:4:3: '//' or '/*' is not followed by whitespace. [IllegalTokenText]
+Deque.java:8:1: File contains tab characters (this is the first occurrence). Configure your editor to replace tabs with spaces. [FileTabCharacter]
+Deque.java:9:17: The instance variable 'size_num' must start with a lowercase letter and use camelCase. [MemberName]
+RandomizedQueue.java:7:1: File contains tab characters (this is the first occurrence). Configure your editor to replace tabs with spaces. [FileTabCharacter]
+RandomizedQueue.java:7:17: The instance variable 'size_num' must start with a lowercase letter and use camelCase. [MemberName]
+RandomizedQueue.java:16:5: Define constructors after static and instance variables but before methods. [DeclarationOrder]
+RandomizedQueue.java:55:20: The instance (or static) variable 'indicator' must be private. [VisibilityModifier]
+RandomizedQueue.java:56:49: ';' is not followed by whitespace. [WhitespaceAfter]
+RandomizedQueue.java:56:49: '}' is not preceded with whitespace. [WhitespaceAround]
+Permutation.java:5:1: File contains tab characters (this is the first occurrence). Configure your editor to replace tabs with spaces. [FileTabCharacter]
+Checkstyle ends with 10 errors.
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of Deque
+*-----------------------------------------------------------
+Running 16 total tests.
+
+Tests 1-6 make random calls to addFirst(), addLast(), removeFirst(),
+removeLast(), isEmpty(), and size(). The probabilities of each
+operation are (p1, p2, p3, p4, p5, p6), respectively.
+
+Test 1: Calls to addFirst(), addLast(), and size()
+  *    5 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  *   50 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  *  500 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  * 1000 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+==> passed
+
+Test 2: Calls to addFirst(), removeFirst(), and isEmpty()
+  *    5 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *   50 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *  500 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *    5 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  *   50 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  *  500 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+==> passed
+
+Test 3: Calls to addFirst(), removeLast(), and isEmpty()
+  *    5 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *   50 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *  500 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  * 1000 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *    5 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  *   50 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  *  500 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  * 1000 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+==> passed
+
+Test 4: Calls to addLast(), removeLast(), and isEmpty()
+  *    5 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  *   50 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  *  500 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  *    5 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+  *   50 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+  *  500 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+==> passed
+
+Test 5: Calls to addLast(), removeFirst(), and isEmpty()
+  *    5 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  *   50 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  *  500 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  *    5 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+  *   50 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+  *  500 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+==> passed
+
+Test 6: Calls to addFirst(), addLast(), removeFirst(),
+        removeLast(), isEmpty(), and size().
+  *    5 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *   50 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *  500 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  * 1000 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *    5 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  *   50 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  *  500 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  * 1000 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+==> passed
+
+Test 7: Removing from an empty deque
+  * removeFirst()
+  * removeLast()
+==> passed
+
+Test 8: Create multiple deque objects at the same time
+==> passed
+
+Test 9: Check iterator() after calls only to addFirst()
+==> passed
+
+Test 10: Check iterator() after intermixed calls to addFirst(), addLast(),
+         removeFirst(), and removeLast()
+==> passed
+
+Test 11: Create two nested iterators to same deque
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 12: Create two parallel iterators to same deque
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 13: Create Deque objects of different parameterized types
+==> passed
+
+Test 14: Check that addFirst() and addLast() each throw a NullPointerException
+         when inserting null items
+==> passed
+
+Test 15: Check that remove() and next() throw the specified exceptions in iterator()
+==> passed
+
+Test 16: Check iterator() when Deque is empty
+==> passed
+
+
+Total: 16/16 tests passed!
+
+
+================================================================
+Testing correctness of RandomizedQueue
+*-----------------------------------------------------------
+Running 18 total tests.
+
+Tests 1-4 make random calls to enqueue(), dequeue(), sample(),
+isEmpty(), and size(). The probabilities of each operation are
+(p1, p2, p3, p4, p5), respectively.
+
+Test 1: check random calls to enqueue() and size()
+  *    5 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  *   50 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  *  500 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  * 1000 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+==> passed
+
+Test 2: check random calls to enqueue() and dequeue()
+  *    5 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *   50 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+The random index is8
+The random index is10
+The random index is2
+The random index is9
+The random index is7
+The random index is12
+  *  500 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+The random index is0
+The random index is9
+The random index is7
+The random index is0
+The random index is8
+The random index is10
+The random index is10
+The random index is11
+The random index is17
+The random index is15
+The random index is27
+The random index is26
+The random index is49
+The random index is22
+The random index is62
+The random index is64
+The random index is63
+The random index is68
+The random index is77
+The random index is11
+The random index is42
+The random index is82
+The random index is104
+The random index is3
+The random index is101
+The random index is138
+The random index is61
+The random index is119
+The random index is114
+The random index is64
+The random index is184
+The random index is101
+The random index is27
+The random index is124
+The random index is102
+The random index is197
+The random index is110
+The random index is78
+The random index is46
+The random index is17
+The random index is78
+The random index is82
+The random index is186
+The random index is130
+The random index is197
+The random index is19
+The random index is183
+The random index is269
+The random index is198
+  * 1000 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+The random index is0
+The random index is7
+The random index is7
+The random index is5
+The random index is42
+The random index is31
+The random index is48
+The random index is31
+The random index is27
+The random index is19
+The random index is68
+The random index is93
+The random index is51
+The random index is17
+The random index is88
+The random index is31
+The random index is109
+The random index is36
+The random index is34
+The random index is76
+The random index is19
+The random index is75
+The random index is150
+The random index is138
+The random index is103
+The random index is158
+The random index is133
+The random index is55
+The random index is54
+The random index is127
+The random index is92
+The random index is142
+The random index is8
+The random index is87
+The random index is21
+The random index is242
+The random index is49
+The random index is245
+The random index is218
+The random index is184
+The random index is94
+The random index is120
+The random index is210
+The random index is26
+The random index is212
+The random index is74
+The random index is18
+The random index is95
+The random index is28
+The random index is43
+The random index is197
+The random index is173
+The random index is115
+The random index is214
+The random index is157
+The random index is258
+The random index is104
+The random index is10
+The random index is239
+The random index is185
+The random index is123
+The random index is84
+The random index is326
+The random index is224
+The random index is14
+The random index is16
+The random index is151
+The random index is80
+The random index is311
+The random index is366
+The random index is160
+The random index is342
+The random index is6
+The random index is155
+The random index is175
+The random index is283
+The random index is103
+The random index is407
+The random index is346
+The random index is239
+The random index is235
+The random index is248
+The random index is462
+The random index is340
+The random index is372
+The random index is156
+The random index is104
+The random index is314
+The random index is237
+The random index is492
+The random index is389
+The random index is493
+The random index is79
+  *    5 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+The random index is0
+  *   50 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+The random index is0
+The random index is0
+The random index is0
+    java.lang.ArrayIndexOutOfBoundsException: 0
+
+    RandomizedQueue.enqueue(RandomizedQueue.java:28)
+    TestRandomizedQueue.random(TestRandomizedQueue.java:82)
+    TestRandomizedQueue.test2(TestRandomizedQueue.java:214)
+    TestRandomizedQueue.main(TestRandomizedQueue.java:1015)
+
+    - sequence of dequeue operations was:
+         rq.enqueue(28)
+         rq.enqueue(36)
+         rq.dequeue()     ==> 28
+         rq.dequeue()     ==> 36
+         rq.size()        ==> 0
+         rq.enqueue(33)
+         rq.dequeue()     ==> 33
+         rq.enqueue(26)
+
+  *  500 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+The random index is0
+    java.lang.ArrayIndexOutOfBoundsException: 0
+
+    RandomizedQueue.enqueue(RandomizedQueue.java:28)
+    TestRandomizedQueue.random(TestRandomizedQueue.java:82)
+    TestRandomizedQueue.test2(TestRandomizedQueue.java:215)
+    TestRandomizedQueue.main(TestRandomizedQueue.java:1015)
+
+  * 1000 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+The random index is0
+    java.lang.ArrayIndexOutOfBoundsException: 0
+
+    RandomizedQueue.enqueue(RandomizedQueue.java:28)
+    TestRandomizedQueue.random(TestRandomizedQueue.java:82)
+    TestRandomizedQueue.test2(TestRandomizedQueue.java:216)
+    TestRandomizedQueue.main(TestRandomizedQueue.java:1015)
+
+    - sequence of dequeue operations was:
+         rq.enqueue(122)
+         rq.isEmpty()     ==> false
+         rq.isEmpty()     ==> false
+         rq.dequeue()     ==> 122
+         rq.size()        ==> 0
+         rq.isEmpty()     ==> true
+         rq.isEmpty()     ==> true
+         rq.enqueue(822)
+
+==> FAILED
+
+Test 3: check random calls to enqueue(), sample(), and size()
+  *    5 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *   50 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *  500 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  * 1000 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *    5 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  *   50 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  *  500 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  * 1000 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+==> passed
+
+Test 4: check random calls to enqueue(), dequeue(), sample(), isEmpty(), and size()
+  *    5 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+The random index is0
+  *   50 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+The random index is1
+The random index is4
+The random index is7
+The random index is3
+The random index is2
+The random index is4
+The random index is3
+  *  500 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+The random index is0
+    java.lang.ArrayIndexOutOfBoundsException: 0
+
+    RandomizedQueue.enqueue(RandomizedQueue.java:28)
+    TestRandomizedQueue.random(TestRandomizedQueue.java:82)
+    TestRandomizedQueue.test4(TestRandomizedQueue.java:239)
+    TestRandomizedQueue.main(TestRandomizedQueue.java:1017)
+
+    - sequence of dequeue operations was:
+         rq.enqueue(397)
+         rq.dequeue()     ==> 397
+         rq.enqueue(294)
+
+  * 1000 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+The random index is4
+The random index is2
+The random index is3
+The random index is6
+The random index is2
+The random index is13
+The random index is1
+The random index is18
+The random index is4
+The random index is13
+The random index is22
+The random index is13
+The random index is29
+The random index is3
+The random index is9
+The random index is0
+The random index is4
+The random index is5
+The random index is28
+The random index is45
+The random index is2
+The random index is1
+The random index is30
+The random index is35
+The random index is5
+The random index is52
+The random index is51
+The random index is15
+The random index is43
+The random index is64
+The random index is22
+The random index is81
+The random index is49
+The random index is22
+The random index is28
+The random index is34
+The random index is99
+The random index is64
+The random index is101
+The random index is26
+The random index is81
+The random index is131
+The random index is10
+The random index is120
+The random index is115
+The random index is100
+The random index is5
+The random index is14
+The random index is157
+The random index is34
+The random index is47
+The random index is127
+The random index is149
+The random index is163
+The random index is14
+The random index is103
+The random index is41
+The random index is187
+The random index is184
+The random index is69
+The random index is193
+The random index is183
+The random index is168
+The random index is1
+The random index is115
+The random index is144
+The random index is171
+The random index is37
+The random index is70
+The random index is13
+The random index is260
+The random index is135
+The random index is101
+The random index is157
+The random index is148
+The random index is209
+The random index is64
+The random index is26
+The random index is48
+The random index is102
+The random index is40
+The random index is129
+The random index is233
+The random index is126
+The random index is53
+The random index is199
+The random index is232
+The random index is300
+The random index is105
+The random index is77
+The random index is46
+The random index is239
+The random index is86
+The random index is75
+The random index is168
+The random index is444
+The random index is388
+The random index is331
+The random index is149
+The random index is74
+The random index is147
+The random index is212
+The random index is189
+The random index is179
+The random index is373
+The random index is360
+  *    5 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+  *   50 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+The random index is2
+The random index is1
+The random index is3
+The random index is2
+The random index is1
+The random index is0
+  *  500 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+The random index is0
+    java.lang.ArrayIndexOutOfBoundsException: 0
+
+    RandomizedQueue.enqueue(RandomizedQueue.java:28)
+    TestRandomizedQueue.random(TestRandomizedQueue.java:82)
+    TestRandomizedQueue.test4(TestRandomizedQueue.java:243)
+    TestRandomizedQueue.main(TestRandomizedQueue.java:1017)
+
+    - sequence of dequeue operations was:
+         rq.isEmpty()     ==> true
+         rq.size()        ==> 0
+         rq.size()        ==> 0
+         rq.size()        ==> 0
+         rq.isEmpty()     ==> true
+         rq.size()        ==> 0
+         rq.isEmpty()     ==> true
+         rq.enqueue(488)
+         rq.dequeue()     ==> 488
+         rq.enqueue(17)
+
+  * 1000 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+The random index is5
+The random index is0
+The random index is2
+The random index is2
+The random index is7
+The random index is6
+The random index is8
+The random index is9
+The random index is2
+The random index is0
+The random index is6
+The random index is2
+The random index is5
+The random index is2
+The random index is5
+The random index is5
+The random index is5
+The random index is0
+The random index is5
+The random index is8
+The random index is8
+The random index is11
+The random index is7
+The random index is10
+The random index is8
+The random index is7
+The random index is1
+The random index is10
+The random index is4
+The random index is11
+The random index is3
+The random index is0
+The random index is5
+The random index is5
+The random index is4
+The random index is11
+The random index is6
+The random index is13
+The random index is1
+The random index is13
+The random index is7
+The random index is14
+The random index is5
+The random index is5
+The random index is4
+The random index is4
+The random index is12
+The random index is15
+The random index is0
+The random index is9
+The random index is3
+The random index is7
+The random index is9
+The random index is15
+The random index is6
+The random index is20
+The random index is14
+The random index is16
+The random index is21
+The random index is19
+The random index is20
+The random index is22
+The random index is20
+The random index is3
+The random index is6
+The random index is12
+The random index is19
+The random index is14
+The random index is31
+The random index is19
+The random index is24
+The random index is33
+The random index is2
+The random index is6
+The random index is32
+The random index is4
+The random index is30
+The random index is31
+==> FAILED
+
+Test 5: call dequeue() and sample() from an empty randomized queue
+  * dequeue()
+  * sample()
+==> passed
+
+Test 6: create multiple randomized queue objects at the same time
+The random index is4
+The random index is5
+The random index is0
+The random index is6
+The random index is3
+The random index is1
+The random index is6
+The random index is2
+The random index is2
+The random index is3
+The random index is0
+The random index is3
+The random index is0
+The random index is2
+The random index is2
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is18
+The random index is89
+The random index is51
+The random index is27
+The random index is51
+The random index is62
+The random index is62
+The random index is51
+The random index is31
+The random index is0
+The random index is63
+The random index is51
+The random index is23
+The random index is59
+The random index is61
+The random index is37
+The random index is31
+The random index is84
+The random index is80
+The random index is60
+The random index is1
+The random index is41
+The random index is76
+The random index is80
+The random index is30
+The random index is11
+The random index is5
+The random index is76
+The random index is15
+The random index is3
+The random index is14
+The random index is26
+The random index is10
+The random index is42
+The random index is27
+The random index is20
+The random index is76
+The random index is2
+The random index is34
+The random index is70
+The random index is30
+The random index is49
+The random index is11
+The random index is60
+The random index is25
+The random index is4
+The random index is4
+The random index is55
+The random index is11
+The random index is72
+The random index is48
+The random index is39
+The random index is33
+The random index is72
+The random index is30
+The random index is22
+The random index is10
+The random index is60
+The random index is59
+The random index is65
+The random index is26
+The random index is41
+The random index is40
+The random index is34
+The random index is19
+The random index is6
+The random index is37
+The random index is5
+The random index is52
+The random index is11
+The random index is45
+The random index is15
+The random index is30
+The random index is60
+The random index is52
+The random index is10
+The random index is26
+The random index is12
+The random index is7
+The random index is17
+The random index is9
+The random index is28
+The random index is1
+The random index is15
+The random index is29
+The random index is37
+The random index is30
+The random index is20
+The random index is8
+The random index is13
+The random index is48
+The random index is13
+The random index is28
+The random index is17
+The random index is24
+The random index is31
+The random index is18
+The random index is29
+The random index is17
+The random index is29
+The random index is1
+The random index is10
+The random index is1
+The random index is43
+The random index is2
+The random index is26
+The random index is2
+The random index is30
+The random index is34
+The random index is6
+The random index is28
+The random index is10
+The random index is18
+The random index is27
+The random index is28
+The random index is40
+The random index is7
+The random index is4
+The random index is35
+The random index is7
+The random index is0
+The random index is29
+The random index is23
+The random index is22
+The random index is1
+The random index is30
+The random index is10
+The random index is3
+The random index is4
+The random index is5
+The random index is1
+The random index is11
+The random index is2
+The random index is16
+The random index is25
+The random index is25
+The random index is6
+The random index is4
+The random index is16
+The random index is28
+The random index is25
+The random index is7
+The random index is16
+The random index is26
+The random index is13
+The random index is22
+The random index is8
+The random index is2
+The random index is11
+The random index is0
+The random index is8
+The random index is5
+The random index is2
+The random index is21
+The random index is7
+The random index is17
+The random index is3
+The random index is4
+The random index is15
+The random index is12
+The random index is12
+The random index is15
+The random index is13
+The random index is14
+The random index is12
+The random index is12
+The random index is8
+The random index is2
+The random index is9
+The random index is1
+The random index is0
+The random index is10
+The random index is5
+The random index is11
+The random index is11
+The random index is12
+The random index is1
+The random index is5
+The random index is6
+The random index is9
+The random index is0
+The random index is0
+The random index is1
+The random index is1
+The random index is4
+The random index is0
+The random index is1
+The random index is3
+The random index is4
+The random index is0
+The random index is2
+The random index is3
+The random index is1
+The random index is2
+The random index is0
+The random index is1
+The random index is1
+The random index is1
+The random index is0
+The random index is0
+==> passed
+
+Test 7: check that iterator() returns correct items after a sequence of
+        enqueue() operations
+==> passed
+
+Test 8: check that iterator() returns correct items after sequence of enqueue()
+        and dequeue() operations
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is1
+The random index is0
+The random index is2
+The random index is4
+The random index is4
+The random index is9
+The random index is11
+The random index is10
+The random index is4
+The random index is2
+The random index is7
+The random index is5
+The random index is1
+The random index is0
+The random index is6
+The random index is2
+The random index is0
+The random index is2
+The random index is1
+The random index is1
+The random index is3
+The random index is0
+The random index is1
+The random index is2
+The random index is1
+The random index is0
+The random index is0
+    java.lang.ArrayIndexOutOfBoundsException: 0
+
+    RandomizedQueue.enqueue(RandomizedQueue.java:28)
+    TestRandomizedQueue.test8(TestRandomizedQueue.java:391)
+    TestRandomizedQueue.main(TestRandomizedQueue.java:1021)
+
+==> FAILED
+
+Test 9: create two nested iterators over the same randomized queue
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 10: create two parallel iterators over the same randomized queue
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 11: create two iterators over different randomized queues
+==> passed
+
+Test 12: create RandomizedQueue objects of different parameterized types
+The random index is0
+The random index is0
+The random index is0
+==> passed
+
+Test 13: check randomness of sample() by enqueueing n items, repeatedly calling
+         sample(), and counting the frequency of each item
+  * n = 3, trials = 12000
+  * n = 5, trials = 12000
+  * n = 8, trials = 12000
+  * n = 10, trials = 12000
+==> passed
+
+Test 14: check randomness of dequeue() by enqueueing n items, dequeueing n items,
+         and seeing whether each of the n! permutations is equally likely
+  * n = 2, trials = 12000
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is0
+The random index is1
+The random index is0
+The random index is0
+The random index is0
+The random i
+
+...
+
+WARNING: the grading output was truncated due to excessive length.
+Typically, this is because you have a method that has an unanticipated side effect
+(such as printing to standard output or throwing an exception). A large amount of output
+can also arise from failing many tests.

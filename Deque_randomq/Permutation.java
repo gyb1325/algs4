@@ -1,5 +1,4 @@
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdIn;
 
 public class Permutation {
@@ -10,8 +9,7 @@ public class Permutation {
 			sr.enqueue(StdIn.readString());
 		}
 		while ((k--) > 0) {
-			String out = sr.dequeue();
-			StdOut.println(out);
+			StdOut.println(sr.dequeue());
 		}
 	}
 }

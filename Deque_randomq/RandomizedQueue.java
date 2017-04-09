@@ -1,22 +1,20 @@
-//Created By Yongbin
-
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import java.util.Iterator;
 
 
-public class RandomizedQueue<T> implements Iterable<T> {
+public class RandomizedQueue<Item> implements Iterable<Item> {
 	private int size_num;
-	private T[] s;
+	private Item[] s;
 	private void resize(int capacity) {
-		T[] copy = (T[]) new Object[capacity];
+		Item[] copy = (Item[]) new Object[capacity];
 		for (int i = 0; i < size_num; i++)
 			copy[i] = s[i];
 		s = copy;
 	}
 
 	public RandomizedQueue() {
-		s = (T[]) new Object[1];
+		s = (Item[]) new Object[1];
 	}
 	public boolean isEmpty() {
 		return size_num == 0;
@@ -24,16 +22,15 @@ public class RandomizedQueue<T> implements Iterable<T> {
 	public int size() {
 		return size_num;
 	}
-	public void enqueue(T item) {
+	public void enqueue(Item item) {
 		if (item == null) throw new java.lang.NullPointerException("The null item is added");
 		if (size_num == s.length)resize(2 * s.length);
 		s[size_num++] = item;
 	}
-	public T dequeue() {
+	public Item dequeue() {
 		if (size_num == 0) throw new java.util.NoSuchElementException("No element exists");
 		int index = StdRandom.uniform(0, size_num);
-		StdOut.println("The random index is" + index);
-		T item = s[index];
+		Item item = s[index];
 		for (int i = index; i <= (size_num - 2); i++) {
 			s[i] = s[i + 1];
 		}
@@ -44,20 +41,20 @@ public class RandomizedQueue<T> implements Iterable<T> {
 		return item;
 
 	}
-	public T sample() {
+	public Item sample() {
 		if (size_num == 0) throw new java.util.NoSuchElementException("No element exists");
 		int index = StdRandom.uniform(0, size_num);
 		return s[index];
 	}
-	public Iterator<T> iterator() {
+	public Iterator<Item> iterator() {
 		return new RandomizedQueueIterator();
 	}
-	private class RandomizedQueueIterator implements Iterator<T> {
+	private class RandomizedQueueIterator implements Iterator<Item> {
 		private int i = size_num;
 		boolean [] indicator = new boolean[size_num];
-		public boolean hasNext() {return i > 0;}
-		public void remove() {throw new java.lang.UnsupportedOperationException("This operation is not allowed");}
-		public T next() {
+		public boolean hasNext() { return i > 0;}
+		public void remove() { throw new java.lang.UnsupportedOperationException("This operation is not allowed"); }
+		public Item next() {
 			if (i > 0)
 				while (true) {
 					int index = StdRandom.uniform(0, size_num);
