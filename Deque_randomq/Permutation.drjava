@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Permutation.java" package="" timestamp="09-Apr-2017 14:00:19">
+        <select from="254" to="254"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="RandomizedQueue.java" package="" timestamp="08-Apr-2017 21:42:57">
+        <select from="254" to="254"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
