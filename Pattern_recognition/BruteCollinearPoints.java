@@ -11,7 +11,6 @@ public class BruteCollinearPoints {
 	public BruteCollinearPoints(Point[] points) {
 		if (points == null) throw new java.lang.NullPointerException("The Point is null");
 		checkrepeated(points) ;
-		num = 0;
 		Point [] copypoint = Arrays.copyOf(points, points.length);
 		Arrays.sort(copypoint);
 
@@ -20,8 +19,6 @@ public class BruteCollinearPoints {
 			if (points[i] == null) throw new java.lang.NullPointerException("The Point is null");
 		}
 		for (int i = 0; i <= (size - 4); i++) {
-			max = copypoint[i];
-			min = copypoint[i];
 			for (int j = i + 1; j <= (size - 3); j++) {
 
 				for (int p = j + 1; p <= (size - 2); p++) {
@@ -48,7 +45,7 @@ public class BruteCollinearPoints {
 		return list.toArray(new LineSegment[list.size()]);
 	}
 
-	public void checkrepeated(Point [] points) {
+	private void checkrepeated(Point [] points) {
 		for (int i = 0; i < (points.length - 2); i++) {
 			for (int j = i + 1;  j < (points.length - 1); j++) {
 				if (points[i].compareTo(points[j]) == 0)

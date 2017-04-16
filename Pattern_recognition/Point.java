@@ -98,7 +98,7 @@ public class Point implements Comparable<Point> {
 			public int compare(Point a, Point b) {
 				return Double.compare(slopeTo(a), slopeTo(b));
 			}
-		}
+		};
 	}
 
 	/**

@@ -9,13 +9,13 @@ public class FastCollinearPoints {
 	private ArrayList<LineSegment> linesegments;
 	public FastCollinearPoints(Point[] points) {
 		if (points == null)throw new java.lang.NullPointerException();
-		checknullpointer(points);
 		checkrepeated(points) ;
 		linesegments = new ArrayList<>();
 		Point [] axl = Arrays.copyOf(points, points.length);
-		Arrays.sort(axl);
+		//Arrays.sort(axl);
 		ArrayList<Point> list = new ArrayList<>();
 		for (Point element : points) {
+			if (element == null) throw new java.lang.NullPointerException();
 			Arrays.sort(axl, element.slopeOrder());
 			for (int i = 1; i < axl.length; i++) {
 				if (element.slopeTo(axl[i]) == element.slopeTo(axl[i - 1])) {
@@ -30,7 +30,7 @@ public class FastCollinearPoints {
 		}
 
 	}
-	public void addtosegmentlist(ArrayList<Point> list) {
+	private void addtosegmentlist(ArrayList<Point> list) {
 		if (list.size() < 4) return;
 		Point [] points = list.toArray(new Point[list.size()]);
 		Arrays.sort(points);
@@ -45,12 +45,8 @@ public class FastCollinearPoints {
 	public int numberOfSegments() {
 		return linesegments.size();
 	}
-	public void checknullpointer(Point [] points) {
-		for (int i = 0; i < points.length; i++) {
-			if (points[i] == null) throw new java.lang.NullPointerException();
-		}
-	}
-	public void checkrepeated(Point [] points) {
+
+	private void checkrepeated(Point [] points) {
 		Point [] axl = Arrays.copyOf(points, points.length);
 		Arrays.sort(axl);
 		for (int i = 0; i < axl.length - 1; i++) {
