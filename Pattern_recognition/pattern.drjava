@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="BruteCollinearPoints.java" package="" timestamp="15-Apr-2017 17:30:28">
+        <select from="279" to="279"/>
+        <scroll column="1455" row="0"/>
+      </file>
+      <file name="Point.java" package="" timestamp="14-Apr-2017 21:55:36">
+        <select from="279" to="279"/>
+        <scroll column="1455" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
