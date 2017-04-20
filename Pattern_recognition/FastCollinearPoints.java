@@ -28,6 +28,13 @@ public class FastCollinearPoints {
 				}
 			}
 		}
+		for (int i = 0 ; i < linesegments.size() - 1; i++) {
+			for (int j = i + 1 ; j < linesegments.size(); j++) {
+				if (linesegments.get(i).toString().equals(linesegments.get(j).toString()) ) {
+					linesegments.remove(j--);
+				}
+			}
+		}
 
 	}
 	private void addtosegmentlist(ArrayList<Point> list) {
@@ -35,11 +42,11 @@ public class FastCollinearPoints {
 		Point [] points = list.toArray(new Point[list.size()]);
 		Arrays.sort(points);
 		LineSegment ls = new LineSegment(points[0], points[points.length - 1]);
-		for (LineSegment element : linesegments) {
-			if (ls.toString().equals(element.toString())) {
-				return;
-			}
-		}
+		// for (LineSegment element : linesegments) {
+		// 	if (ls.toString().equals(element.toString())) {
+		// 		return;
+		// 	}
+		// }
 		linesegments.add(ls);
 	}
 	public int numberOfSegments() {
