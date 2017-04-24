@@ -2,16 +2,21 @@ import edu.princeton.cs.algs4.MinPQ;
 import java.lang.Math;
 import java.util.Iterator;
 import edu.princeton.cs.algs4.StdRandom;
+import java.lang.StringBuilder
 
 
 public class Board {
     private int dim;
     private int[][] block_copy;
+    private ArrayList<Board> neighborboard;
+    private int index_0 ;
     public Board(int[][] blocks) {         // construct a board from an n-by-n array of blocks
         dim = blocks.length;
         block_copy = new int[dim][dim];
         for (int i = 0; i < dim; i++) {                               // (where blocks[i][j] = block in row i, column j)
             for (int j = 0; j < dim; j++ ) {
+                if (blocks[i][j] == 0)
+                    index_0 = i * dim + j + 1;
                 block_copy[i][j] = blocks[i][j];
             }
         }
@@ -74,18 +79,62 @@ public class Board {
             } else {
                 j =  StdRandom.uniform(1, dim * dim - 1);
             }
-            exch(block_temp, i , j);
-            return new Board(block_temp);
-
         }
+        exch(block_temp, i , j);
+        return new Board(block_temp);
 
-        public boolean equals(Object y) {      // does this board equal y?
+    }
 
+    public boolean equals(Object y) {      // does this board equal y?
+        return this.toString().equals((Board)y.toString());
+    }
+    public Iterable<Board> neighbors() {   // all neighboring boards
+        neighborboard = new ArrayList<Board>();
+        int row = index_0 / dim;
+        int col = index_0 % dim - 1;
+        if (row + 1 < dim) {
+            exch(block_copy, index_0, index_0 + dim);
+            neighborboard.add(new Board(block_copy));
+            exch(block_copy, index_0, index_0 + dim);
         }
+        if (row >= 1) {
+            exch(block_copy, index_0, index_0 - dim);
+            neighborboard.add(new Board(block_copy));
+            exch(block_copy, index_0, index_0 - dim);
+        }
+        if (col + 1 < dim) {
+            exch(block_copy, index_0, index_0 + 1);
+            neighborboard.add(new Board(block_copy));
+            exch(block_copy, index_0, index_0 + 1);
+        }
+        if (col >= 1) {
+            exch(block_copy, index_0, index_0 - 1);
+            neighborboard.add(new Board(block_copy));
+            exch(block_copy, index_0, index_0 - 1);
+        }
+        return neighborboard;
+
+    }
+    public String toString() {             // string representation of this board (in the output format specified below)
+        StringBuilder output = new StringBuilder();
+        int total = 0;
+        for (int element : block_copy) {
+            output.append(element);
+            total++;
+            if (total % 3 == 0) output.append("\n");
+            else output.append(" ");
+        }
+<<<<<<< HEAD
         public Iterable<Board> neighbors() {    // all neighboring boards
 
         }
         public String toString()               // string representation of this board (in the output format specified below)
-
-        public static void main(String[] args) // unit tests (not graded)
+=======
+        output.delete(output.length() - "\n".length(), output.length());
+        return output.toString();
     }
+>>>>>>> d4797f936eb6bc97dda8b871d17dc8c74ecb8491
+
+    public static void main(String[] args) // unit tests (not graded)
+}
+}
