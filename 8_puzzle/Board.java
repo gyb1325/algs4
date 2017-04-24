@@ -117,13 +117,20 @@ public class Board {
     }
     public String toString() {             // string representation of this board (in the output format specified below)
         StringBuilder output = new StringBuilder();
+
         int total = 0;
+        output.append(dim);
+        output.append("\n");
         for (int element : block_copy) {
             output.append(element);
             total++;
             if (total % 3 == 0) output.append("\n");
             else output.append(" ");
         }
-        public static void main(String[] args) // unit tests (not graded)
+        output.delete(output.length() - "\n".length(), output.length());
+        return output.toString();
     }
+
+    public static void main(String[] args) // unit tests (not graded)
+}
 }
