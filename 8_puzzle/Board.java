@@ -124,17 +124,6 @@ public class Board {
             if (total % 3 == 0) output.append("\n");
             else output.append(" ");
         }
-<<<<<<< HEAD
-        public Iterable<Board> neighbors() {    // all neighboring boards
-
-        }
-        public String toString()               // string representation of this board (in the output format specified below)
-=======
-        output.delete(output.length() - "\n".length(), output.length());
-        return output.toString();
+        public static void main(String[] args) // unit tests (not graded)
     }
->>>>>>> d4797f936eb6bc97dda8b871d17dc8c74ecb8491
-
-    public static void main(String[] args) // unit tests (not graded)
-}
 }
