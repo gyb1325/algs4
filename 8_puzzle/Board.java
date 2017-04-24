@@ -82,7 +82,9 @@ public class Board {
         public boolean equals(Object y) {      // does this board equal y?
 
         }
-        public Iterable<Board> neighbors()     // all neighboring boards
+        public Iterable<Board> neighbors() {    // all neighboring boards
+
+        }
         public String toString()               // string representation of this board (in the output format specified below)
 
         public static void main(String[] args) // unit tests (not graded)
