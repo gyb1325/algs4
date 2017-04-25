@@ -12,6 +12,8 @@ public class Board {
     private ArrayList<Board> neighborboard;
     private int index_0 ;
     public Board(int[][] blocks) {         // construct a board from an n-by-n array of blocks
+        if (blocks == null)
+            throw new java.lang.NullPointerException();
         dim = blocks.length;
         block_copy = new int[dim][dim];
         for (int i = 0; i < dim; i++) {                               // (where blocks[i][j] = block in row i, column j)
@@ -19,7 +21,7 @@ public class Board {
                 if (blocks[i][j] == 0)
                     index_0 = i * dim + j + 1;
                 else {
-                    manhat += Math.abs(i + j - (blocks[i][j] - 1) / dim - (blocks[i][j] - 1) % dim );
+                    manhat += (Math.abs(i - (blocks[i][j] - 1) / dim) + Math.abs(j - (blocks[i][j] - 1) % dim));
                 }
                 if (!(i == dim - 1 && j == dim - 1)) {
                     if ((i * dim + j + 1) != blocks[i][j])
@@ -77,6 +79,7 @@ public class Board {
     }
 
     public boolean equals(Object y) {      // does this board equal y?
+        if (!(y instanceof Board) ) return false;
         Board that = (Board) y;
 
         if (this.hamming() != that.hamming() || this.manhattan() != that.manhattan() || this.dim != that.dim ) {
