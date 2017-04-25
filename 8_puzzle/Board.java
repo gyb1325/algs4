@@ -43,7 +43,7 @@ public class Board {
         return manhat;
     }
     public boolean isGoal() {              // is this board the goal board?
-        return (hamming() == 0);
+        return (hamn == 0);
     }
 
     private void exch(int[][] blocks, int index1, int index2) {
