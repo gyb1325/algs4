@@ -55,26 +55,38 @@ public class Board {
     }
 
     public Board twin() {                  // a board that is obtained by exchanging any pair of blocks
-
-
-        int i = StdRandom.uniform(1, dim * dim - 1);
-        int j = StdRandom.uniform(1, dim * dim - 1);
-        int[][] block_temp = new int[dim][dim];
+        int [][] block_temp = new int[dim][dim];
         for (int p = 0; p < dim; p++) {                               // (where blocks[i][j] = block in row i, column j)
             for (int q = 0; q < dim; q++ ) {
                 block_temp[p][q] = block_copy[p][q];
             }
         }
-
-        while ((i == j) || block_temp[(i - 1) / dim][(i - 1) % dim ] == 0 || block_temp[(j - 1)  / dim][(j - 1) % dim] == 0) {
-            if (i == 0) {
-                i =  StdRandom.uniform(1, dim * dim - 1);
-            } else {
-                j =  StdRandom.uniform(1, dim * dim - 1);
-            }
+        if (index_0 == 1 || index_0 == 2) {
+            exch(block_temp, 3 , 4);
+            return new Board(block_temp);
+        } else {
+            exch(block_temp, 1 , 2);
+            return new Board(block_temp);
         }
-        exch(block_temp, i , j);
-        return new Board(block_temp);
+        // int i = StdRandom.uniform(1, dim * dim - 1);
+        // int j = StdRandom.uniform(1, dim * dim - 1);
+        // int[][] block_temp = new int[dim][dim];
+        // for (int p = 0; p < dim; p++) {                               // (where blocks[i][j] = block in row i, column j)
+        //     for (int q = 0; q < dim; q++ ) {
+        //         block_temp[p][q] = block_copy[p][q];
+        //     }
+        // }
+
+        // while ((i == j) || block_temp[(i - 1) / dim][(i - 1) % dim ] == 0 || block_temp[(j - 1)  / dim][(j - 1) % dim] == 0) {
+        //     if (i == 0) {
+        //         i =  StdRandom.uniform(1, dim * dim - 1);
+        //     } else {
+        //         j =  StdRandom.uniform(1, dim * dim - 1);
+        //     }
+        // }
+        // exch(block_temp, i , j);
+        // return new Board(block_temp);
+
 
     }
 
@@ -82,7 +94,7 @@ public class Board {
         if (!(y instanceof Board) ) return false;
         Board that = (Board) y;
 
-        if (this.hamming() != that.hamming() || this.manhattan() != that.manhattan() || this.dim != that.dim ) {
+        if (this.hamming() != that.hamming() || this.manhattan() != that.manhattan() || this.dim != that.dim || this.index_0 != that.index_0 ) {
             return false;
         }
         for (int i = 0; i < dim; i++ ) {
