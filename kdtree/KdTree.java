@@ -1,6 +1,8 @@
 
 import java.util.TreeSet;
-
+import edu.princeton.cs.algs4.Point2D;
+import edu.princeton.cs.algs4.RectHV;
+import edu.princeton.cs.algs4.StdDraw;
 
 public class KdTree {
 	private class Node {
@@ -30,7 +32,7 @@ public class KdTree {
 		return size_num;
 	}
 	public void insert(Point2D p) {            // add the point to the set (if it is not already in the set)
-		kd_tree = insert(kd_tree, p, 0.0, 0.0, 1.0, 1.0);
+		kd_tree = insert(kd_tree, p, 0.0, 0.0, 1.0, 1.0, 0);
 	}
 
 	private Node insert(Node root, Point2D points, double xmin, double ymin, double xmax, double ymax, int level) {
@@ -47,11 +49,12 @@ public class KdTree {
 			}
 		} else if (cmp < 0) {
 			if (level % 2 == 0) {
-				root.left = insert(root.left, points, root.p.x(), ymin, xmax, ymax, level + 1);
+				root.right = insert(root.right, points, root.p.x(), ymin, xmax, ymax, level + 1);
 			} else {
-				root.left = insert(root.left, points, xmin, root.p.y(), xmax, ymax, level + 1);
+				root.right = insert(root.right, points, xmin, root.p.y(), xmax, ymax, level + 1);
 			}
 		}
+		return root;
 	}
 	public boolean contains(Point2D p) {          // does the set contain point p?
 		return p.equals(contains(kd_tree, p, 0));
@@ -79,22 +82,25 @@ public class KdTree {
 				return root.p;
 			}
 		}
+		return null;
 	}
 
 
 	public void draw() {                       // draw all points to standard draw
 		StdDraw.clear();
-		drawline(kd_tree, 0)
+		drawline(kd_tree, 0);
 	}
 	private void drawline(Node root, int level) {
+
 		if (root != null) {
+
 			StdDraw.setPenRadius();
 			if (level % 2 == 0) {
 				StdDraw.setPenColor(StdDraw.RED);
-				StdDraw.line(root.p.x(), root.rect.ymin(), root.p.x(), root.rect.ymax())
+				StdDraw.line(root.p.x(), root.rect.ymin(), root.p.x(), root.rect.ymax());
 			} else {
 				StdDraw.setPenColor(StdDraw.BLUE);
-				StdDraw.line(root.rect.xmin(), root.p.y , root.rect.xmax(), root.p.y )
+				StdDraw.line(root.rect.xmin(), root.p.y() , root.rect.xmax(), root.p.y() );
 			}
 
 			StdDraw.setPenRadius(0.01);
@@ -109,19 +115,18 @@ public class KdTree {
 		PointsAdd(kd_tree, rect, set);
 		return set;
 	}
-	private PointsAdd(Node root, RectHV rectangle, TreeSet<Point2D> set);
-	{
-		if (root != null && rectangle.intersect(root.rect)) {
+	private void PointsAdd(Node root, RectHV rectangle, TreeSet<Point2D> set) {
+		if (root != null && rectangle.intersects(root.rect)) {
 			if (rectangle.contains(root.p)) set.add(root.p);
-			PointsAdd(root.left, rect, set);
-			PointsAdd(root.right, rect, set);
+			PointsAdd(root.left, rectangle, set);
+			PointsAdd(root.right, rectangle, set);
 		}
 	}
 	public Point2D nearest(Point2D p) {           // a nearest neighbor in the set to point p; null if the set is empty
 		if (size_num == 0) return null;
 		else {
 			Point2D result = null;
-			result = Point2D(kd_tree, p, result);
+			result = nearest(kd_tree, p, result);
 			return result;
 		}
 	}
@@ -145,5 +150,7 @@ public class KdTree {
 		return min;
 	}
 
-	public static void main(String[] args)                  // unit testing of the methods (optional)
+	public static void main(String[] args) {                // unit testing of the methods (optional)
+
+	}
 }
